@@ -14,7 +14,7 @@ interface WhatsAppButtonProps {
 }
 
 const variantClasses: Record<NonNullable<WhatsAppButtonProps["variant"]>, string> = {
-  primary: "bg-terracotta-500 hover:bg-terracotta-600 text-beige-50",
+  primary: "bg-navy-800 hover:bg-navy-900 text-beige-50",
   secondary: "bg-navy-900 hover:bg-navy-800 text-beige-50",
   outline:
     "border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-beige-50",
@@ -35,7 +35,7 @@ export default function WhatsAppButton({
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors shadow-sm",
+        "inline-flex items-center justify-center gap-2 rounded-[3px] px-6 py-3 text-sm font-semibold tracking-wide transition-colors shadow-sm",
         variantClasses[variant],
         className
       )}

@@ -1,8 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import { MapPin } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import SectionHeading from "./SectionHeading";
 
 export default function LocationSection() {
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   return (
     <section id="location" className="bg-beige-200/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -13,7 +18,10 @@ export default function LocationSection() {
         />
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-5">
-          <div className="overflow-hidden rounded-2xl shadow-sm lg:col-span-3">
+          <div className="relative h-105 overflow-hidden rounded-2xl shadow-sm lg:col-span-3">
+            {!mapLoaded && (
+              <div className="absolute inset-0 animate-pulse bg-beige-200" />
+            )}
             <iframe
               title={`${siteConfig.name} location map`}
               src={siteConfig.mapEmbedUrl}
@@ -21,7 +29,8 @@ export default function LocationSection() {
               height="420"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-[420px] w-full border-0"
+              onLoad={() => setMapLoaded(true)}
+              className="relative h-105 w-full border-0"
             />
           </div>
 

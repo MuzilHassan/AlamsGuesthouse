@@ -13,6 +13,7 @@ export default function ServicesSection() {
         <SectionHeading
           eyebrow="Amenities"
           title="Everything You Need For A Comfortable Stay"
+          titleClassName="mx-auto max-w-sm sm:max-w-md"
         />
 
         <motion.div

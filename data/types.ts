@@ -1,6 +1,7 @@
 export interface ImageItem {
   src: string;
   alt: string;
+  caption?: string;
 }
 
 export type AmenityKey =

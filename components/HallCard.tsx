@@ -1,64 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Users } from "lucide-react";
 import type { Hall } from "@/data/halls";
 import { whatsappMessages } from "@/lib/whatsapp";
 import { staggerItem } from "@/lib/motionVariants";
-import { shimmer } from "@/lib/utils";
-import WhatsAppButton from "./WhatsAppButton";
-import Lightbox from "./Lightbox";
+import ImagePlaceholder from "./ImagePlaceholder";
+import WhatsAppLink from "./WhatsAppLink";
 
 export default function HallCard({ hall }: { hall: Hall }) {
-  const [imageIndex, setImageIndex] = useState(0);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
   return (
     <motion.div
       variants={staggerItem}
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-beige-300 bg-beige-50 shadow-sm hover:shadow-xl"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-beige-300 bg-beige-50 shadow-sm hover:shadow-xl sm:flex-row"
     >
-      <button
-        type="button"
-        onClick={() => setLightboxIndex(imageIndex)}
-        onMouseEnter={() =>
-          hall.images.length > 1 &&
-          setImageIndex((i) => (i + 1) % hall.images.length)
-        }
-        className="relative aspect-[4/3] w-full overflow-hidden"
-        aria-label={`View photos of ${hall.name}`}
-      >
+      <div className="relative aspect-4/3 w-full overflow-hidden sm:aspect-auto sm:w-70 sm:shrink-0">
         <motion.div
           className="h-full w-full"
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.04 }}
           transition={{ duration: 0.4 }}
         >
-          <Image
-            src={hall.images[imageIndex].src}
-            alt={hall.images[imageIndex].alt}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover"
-            placeholder="blur"
-            blurDataURL={shimmer(900, 700)}
-          />
+          <ImagePlaceholder label={hall.images[0].alt} />
         </motion.div>
-        <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-navy-900/85 px-3 py-1 text-xs font-semibold text-beige-50">
-          <Users size={14} />
-          {hall.capacity.seated} seated
-          {hall.capacity.standing ? ` / ${hall.capacity.standing} standing` : ""}
-        </span>
-      </button>
+      </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col justify-center p-6 sm:p-8">
         <h3 className="font-serif text-xl font-semibold text-navy-900">
           {hall.name}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-navy-700">
+        <div className="mt-1 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-terracotta-700">
+          <Users size={14} />
+          {hall.capacity.seated} seated
+          {hall.capacity.standing ? ` / ${hall.capacity.standing} standing` : ""}
+        </div>
+        <p className="mt-3 text-sm leading-relaxed text-navy-700">
           {hall.shortDescription}
         </p>
 
@@ -73,19 +50,10 @@ export default function HallCard({ hall }: { hall: Hall }) {
           ))}
         </ul>
 
-        <WhatsAppButton
-          message={whatsappMessages.hall(hall.name)}
-          className="mt-6 w-full"
-        >
+        <WhatsAppLink message={whatsappMessages.hall(hall.name)} className="mt-6">
           Enquire on WhatsApp
-        </WhatsAppButton>
+        </WhatsAppLink>
       </div>
-
-      <Lightbox
-        images={hall.images}
-        index={lightboxIndex}
-        onClose={() => setLightboxIndex(null)}
-      />
     </motion.div>
   );
 }

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import type { ImageItem } from "@/data/types";
-import { shimmer } from "@/lib/utils";
 
 interface HeroCarouselProps {
   images: ImageItem[];
@@ -43,12 +42,14 @@ export default function HeroCarousel({
             priority={index === 0}
             sizes="100vw"
             className="object-cover"
-            placeholder="blur"
-            blurDataURL={shimmer(1920, 1080)}
           />
+          <div className="absolute left-6 top-24 rounded-[3px] bg-black/35 px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-wide text-beige-50 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] backdrop-blur-sm sm:left-10 sm:top-28">
+            {images[index].caption ?? images[index].alt}
+          </div>
         </motion.div>
       </AnimatePresence>
-      <div className="absolute inset-0 bg-navy-900/55" />
+      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/55 via-black/10 to-black/65" />
     </div>
   );
 }

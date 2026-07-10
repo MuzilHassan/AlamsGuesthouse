@@ -9,7 +9,7 @@ import HallCard from "./HallCard";
 export default function HallsSection() {
   return (
     <section id="halls" className="bg-beige-100 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Events & Celebrations"
           title="Spaces For Every Occasion"
@@ -21,7 +21,7 @@ export default function HallsSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
-          className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-14 flex flex-col gap-5"
         >
           {halls.map((hall) => (
             <HallCard key={hall.id} hall={hall} />

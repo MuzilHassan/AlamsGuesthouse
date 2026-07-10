@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { heroImages } from "@/data/hero";
 import { whatsappMessages } from "@/lib/whatsapp";
@@ -13,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen min-h-[560px] w-full items-center justify-center overflow-hidden"
+      className="relative flex h-screen min-h-[560px] w-full items-end overflow-hidden"
     >
       <HeroCarousel images={heroImages} />
 
@@ -21,17 +20,17 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         variants={heroStagger}
-        className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-4 text-center"
+        className="relative z-10 flex w-full max-w-2xl flex-col items-start px-6 pb-16 text-left sm:px-10 sm:pb-20"
       >
         <motion.h1
           variants={fadeInUp}
-          className="font-serif text-4xl font-semibold text-beige-50 sm:text-5xl md:text-6xl"
+          className="font-serif text-4xl font-semibold text-beige-50 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] sm:text-5xl md:text-6xl"
         >
           {siteConfig.name}
         </motion.h1>
         <motion.p
           variants={fadeInUp}
-          className="mt-4 max-w-xl text-base text-beige-100 sm:text-lg"
+          className="mt-4 max-w-xl text-base text-beige-100 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] sm:text-lg"
         >
           {siteConfig.tagline}
         </motion.p>
@@ -44,16 +43,6 @@ export default function Hero() {
           </WhatsAppButton>
         </motion.div>
       </motion.div>
-
-      <motion.a
-        href="#about"
-        aria-label="Scroll to About section"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-beige-50"
-      >
-        <ChevronDown size={32} />
-      </motion.a>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { X } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { whatsappMessages } from "@/lib/whatsapp";
@@ -31,8 +32,17 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">
-              <span className="font-serif text-lg font-semibold text-navy-900">
-                {siteConfig.name}
+              <span className="flex items-center gap-2">
+                <Image
+                  src="/images/logo-emblem.png"
+                  alt=""
+                  width={244}
+                  height={201}
+                  className="invert h-7 w-auto"
+                />
+                <span className="font-serif text-lg font-semibold text-navy-900">
+                  {siteConfig.name}
+                </span>
               </span>
               <button
                 type="button"

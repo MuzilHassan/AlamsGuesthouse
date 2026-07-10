@@ -13,17 +13,28 @@ export interface Landmark {
   distance: string;
 }
 
+function formatPhoneDisplay(raw: string): string {
+  const digits = raw.replace(/[^\d]/g, "");
+  // Pakistan mobile numbers: +92 XXX XXXXXXX
+  if (digits.startsWith("92") && digits.length === 12) {
+    return `+92 ${digits.slice(2, 5)} ${digits.slice(5)}`;
+  }
+  return `+${digits}`;
+}
+
+const whatsappNumber =
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923001234567";
+
 export const siteConfig = {
-  name: "Alam Guest House",
+  name: "Alam's Guest House",
   tagline: "Comfort & Hospitality in the Heart of Upper Chitral",
   description:
-    "Alam Guest House offers warm, family-run hospitality in Booni, Upper Chitral — comfortable rooms, an elegant event hall, and easy access to some of the region's most beautiful alpine meadows and valleys.",
-  phoneDisplay: "+92 300 1234567",
-  whatsappNumber:
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923001234567",
+    "Alam's Guest House offers warm, family-run hospitality in Booni, Upper Chitral — comfortable rooms, an elegant event hall, and easy access to some of the region's most beautiful alpine meadows and valleys.",
+  phoneDisplay: formatPhoneDisplay(whatsappNumber),
+  whatsappNumber,
   email: "info@alamguesthouse.example.com",
   address:
-    "Alam Guest House, Booni Kruijinali, Opposite Post Office, Booni 17050, Upper Chitral, Khyber Pakhtunkhwa, Pakistan",
+    "Alam's Guest House, Booni Kruijinali, Opposite Post Office, Booni 17050, Upper Chitral, Khyber Pakhtunkhwa, Pakistan",
   mapEmbedUrl:
     "https://www.google.com/maps?q=" +
     encodeURIComponent(
@@ -31,8 +42,10 @@ export const siteConfig = {
     ) +
     "&output=embed",
   socials: {
-    instagram: "https://instagram.com/alamguesthouse",
-    facebook: "https://facebook.com/alamguesthouse",
+    facebook: "https://www.facebook.com/share/1BNVyoi3zN/",
+    instagram:
+      "https://www.instagram.com/alams.guest.house11?igsh=MWtsdzFlMTA1ZXhxZQ==",
+    tiktok: "https://vt.tiktok.com/ZSXeugH8k/",
   },
   navLinks: [
     { label: "Home", href: "#home" },

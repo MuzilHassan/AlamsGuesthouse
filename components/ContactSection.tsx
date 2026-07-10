@@ -2,7 +2,6 @@ import { Phone } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { whatsappMessages } from "@/lib/whatsapp";
 import WhatsAppButton from "./WhatsAppButton";
-import { InstagramIcon, FacebookIcon } from "./icons/SocialIcons";
 
 export default function ContactSection() {
   return (
@@ -26,31 +25,10 @@ export default function ContactSection() {
 
           <a
             href={`tel:${siteConfig.whatsappNumber}`}
-            className="inline-flex items-center gap-2 rounded-full border border-beige-100/40 px-8 py-4 text-base font-semibold text-beige-50 transition-colors hover:bg-beige-50/10"
+            className="inline-flex items-center gap-2 rounded-[3px] border border-beige-100/40 px-8 py-4 text-base font-semibold text-beige-50 transition-colors hover:bg-beige-50/10"
           >
             <Phone size={18} />
             {siteConfig.phoneDisplay}
-          </a>
-        </div>
-
-        <div className="mt-8 flex items-center justify-center gap-6">
-          <a
-            href={siteConfig.socials.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-beige-200 hover:text-beige-50"
-          >
-            <InstagramIcon width={22} height={22} />
-          </a>
-          <a
-            href={siteConfig.socials.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="text-beige-200 hover:text-beige-50"
-          >
-            <FacebookIcon width={22} height={22} />
           </a>
         </div>
       </div>

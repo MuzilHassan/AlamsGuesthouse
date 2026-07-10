@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Newsreader, Work_Sans, IBM_Plex_Mono } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 import Navbar from "@/components/Navbar";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
 
-const playfair = Playfair_Display({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
 });
 
-const inter = Inter({
+const workSans = Work_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-work-sans",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-ibm-plex-mono",
 });
 
 export const metadata: Metadata = {
@@ -48,13 +57,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${newsreader.variable} ${workSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-beige-100 font-sans text-navy-900">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <FloatingWhatsApp />
+        <MotionConfig reducedMotion="user">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <FloatingWhatsApp />
+        </MotionConfig>
       </body>
     </html>
   );

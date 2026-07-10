@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { whatsappMessages } from "@/lib/whatsapp";
@@ -22,15 +23,31 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a
-          href="#home"
-          className={cn(
-            "font-serif text-xl font-semibold transition-colors",
-            scrolled ? "text-navy-900" : "text-beige-50"
-          )}
-        >
-          {siteConfig.name}
+      <div
+        className={cn(
+          "flex w-full items-center justify-between px-6 transition-[padding] duration-300 sm:px-10",
+          scrolled ? "py-2.5" : "py-4 drop-shadow-[0_1px_5px_rgba(0,0,0,0.55)]"
+        )}
+      >
+        <a href="#home" className="flex items-center gap-2.5">
+          <Image
+            src="/images/logo-emblem.png"
+            alt=""
+            width={244}
+            height={201}
+            className={cn(
+              "h-8 w-auto transition-[filter] duration-300",
+              scrolled && "invert"
+            )}
+          />
+          <span
+            className={cn(
+              "font-serif text-xl font-semibold transition-colors",
+              scrolled ? "text-navy-900" : "text-beige-50"
+            )}
+          >
+            {siteConfig.name}
+          </span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -51,7 +68,15 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <WhatsAppButton message={whatsappMessages.general()}>
+          <WhatsAppButton
+            message={whatsappMessages.general()}
+            variant="outline"
+            className={cn(
+              "px-5 py-2.5 text-xs",
+              !scrolled &&
+                "border-beige-50! text-beige-50! hover:bg-beige-50! hover:text-navy-900!"
+            )}
+          >
             Book on WhatsApp
           </WhatsAppButton>
         </div>

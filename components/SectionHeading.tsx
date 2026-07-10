@@ -9,6 +9,7 @@ interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
+  titleClassName?: string;
 }
 
 export default function SectionHeading({
@@ -16,6 +17,7 @@ export default function SectionHeading({
   title,
   subtitle,
   align = "center",
+  titleClassName,
 }: SectionHeadingProps) {
   return (
     <motion.div
@@ -33,7 +35,12 @@ export default function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
+      <h2
+        className={cn(
+          "text-balance font-serif text-3xl font-semibold text-navy-900 sm:text-4xl",
+          titleClassName
+        )}
+      >
         {title}
       </h2>
       {subtitle && (
