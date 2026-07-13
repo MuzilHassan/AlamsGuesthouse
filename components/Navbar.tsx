@@ -15,6 +15,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+    <>
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-colors duration-300",
@@ -93,8 +94,9 @@ export default function Navbar() {
           <Menu size={24} />
         </button>
       </div>
-
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
+
+    <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }
