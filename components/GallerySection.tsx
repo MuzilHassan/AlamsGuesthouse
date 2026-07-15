@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { galleryImages } from "@/data/gallery";
 import { staggerContainer, staggerItem } from "@/lib/motionVariants";
 import SectionHeading from "./SectionHeading";
-import ImagePlaceholder from "./ImagePlaceholder";
 
 const aspectRatioClass: Record<"square" | "portrait" | "landscape", string> = {
   square: "aspect-square",
@@ -33,11 +33,23 @@ export default function GallerySection() {
             <motion.div
               key={image.id}
               variants={staggerItem}
-              className={`w-full overflow-hidden rounded-xl break-inside-avoid ${
+              className={`relative w-full overflow-hidden rounded-xl break-inside-avoid ${
                 aspectRatioClass[image.aspect ?? "landscape"]
               }`}
             >
-              <ImagePlaceholder label={image.alt} />
+              <motion.div
+                className="h-full w-full"
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 50vw"
+                  className="object-cover"
+                />
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

@@ -1,5 +1,6 @@
 export interface ImageItem {
   src: string;
+  srcMobile?: string;
   alt: string;
   caption?: string;
 }

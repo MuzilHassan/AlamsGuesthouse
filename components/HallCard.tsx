@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Users } from "lucide-react";
 import type { Hall } from "@/data/halls";
 import { whatsappMessages } from "@/lib/whatsapp";
 import { staggerItem } from "@/lib/motionVariants";
-import ImagePlaceholder from "./ImagePlaceholder";
 import WhatsAppLink from "./WhatsAppLink";
 
 export default function HallCard({ hall }: { hall: Hall }) {
@@ -18,11 +18,17 @@ export default function HallCard({ hall }: { hall: Hall }) {
     >
       <div className="relative aspect-4/3 w-full overflow-hidden sm:aspect-auto sm:w-70 sm:shrink-0">
         <motion.div
-          className="h-full w-full"
+          className="relative h-full w-full"
           whileHover={{ scale: 1.04 }}
           transition={{ duration: 0.4 }}
         >
-          <ImagePlaceholder label={hall.images[0].alt} />
+          <Image
+            src={hall.images[0].src}
+            alt={hall.images[0].alt}
+            fill
+            sizes="(min-width: 640px) 280px, 100vw"
+            className="object-cover"
+          />
         </motion.div>
       </div>
 

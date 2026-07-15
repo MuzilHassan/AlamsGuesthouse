@@ -35,13 +35,23 @@ export default function HeroCarousel({
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
+          {images[index].srcMobile && (
+            <Image
+              src={images[index].srcMobile}
+              alt={images[index].alt}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover sm:hidden"
+            />
+          )}
           <Image
             src={images[index].src}
             alt={images[index].alt}
             fill
             priority={index === 0}
             sizes="100vw"
-            className="object-cover"
+            className={`object-cover ${images[index].srcMobile ? "hidden sm:block" : ""}`}
           />
           <div className="absolute left-6 top-24 rounded-[3px] bg-black/35 px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-wide text-beige-50 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] backdrop-blur-sm sm:left-10 sm:top-28">
             {images[index].caption ?? images[index].alt}

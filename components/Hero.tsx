@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen min-h-[560px] w-full items-end overflow-hidden"
+      className="relative flex h-screen min-h-140 w-full items-end overflow-hidden"
     >
       <HeroCarousel images={heroImages} />
 

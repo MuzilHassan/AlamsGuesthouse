@@ -20,9 +20,8 @@ export const rooms: Room[] = [
     maxOccupancy: 2,
     priceHint: "From PKR 3,500/night",
     images: [
-      { src: "https://picsum.photos/seed/alam-room-standard-1/900/700", alt: "Standard Room bed and window view" },
-      { src: "https://picsum.photos/seed/alam-room-standard-2/900/700", alt: "Standard Room seating corner" },
-      { src: "https://picsum.photos/seed/alam-room-standard-3/900/700", alt: "Standard Room attached bathroom" },
+      { src: "/images/rooms/T1-room.jpeg", alt: "Standard Room interior" },
+      { src: "/images/rooms/T1-washroom.jpeg", alt: "Standard Room attached washroom" },
     ],
   },
   {
@@ -34,9 +33,8 @@ export const rooms: Room[] = [
     maxOccupancy: 3,
     priceHint: "From PKR 6,000/night",
     images: [
-      { src: "https://picsum.photos/seed/alam-room-deluxe-1/900/700", alt: "Deluxe Room king bed" },
-      { src: "https://picsum.photos/seed/alam-room-deluxe-2/900/700", alt: "Deluxe Room work desk area" },
-      { src: "https://picsum.photos/seed/alam-room-deluxe-3/900/700", alt: "Deluxe Room bathroom with amenities" },
+      { src: "/images/rooms/t2-room.jpeg", alt: "Deluxe Room interior" },
+      { src: "/images/rooms/t2-washroom.jpeg", alt: "Deluxe Room attached washroom" },
     ],
   },
   {
@@ -48,9 +46,8 @@ export const rooms: Room[] = [
     maxOccupancy: 5,
     priceHint: "From PKR 9,000/night",
     images: [
-      { src: "https://picsum.photos/seed/alam-room-suite-1/900/700", alt: "Family Suite living area" },
-      { src: "https://picsum.photos/seed/alam-room-suite-2/900/700", alt: "Family Suite bedroom" },
-      { src: "https://picsum.photos/seed/alam-room-suite-3/900/700", alt: "Family Suite dining nook" },
+      { src: "/images/rooms/T3-room.jpeg", alt: "Family Suite interior" },
+      { src: "/images/rooms/T3-washroom.jpeg", alt: "Family Suite attached washroom" },
     ],
   },
 ];
