@@ -7,7 +7,7 @@ export const heroImages: ImageItem[] = [
     caption: "Alam's Guest House, Booni",
   },
   {
-    src: "/images/hero/WhatsApp Image 2026-07-15 at 3.51.49 PM.jpeg",
+    src: "/images/hero/guesthouse-side-view-guests.jpeg",
     srcMobile: "/images/hero/side-view.jpeg",
     alt: "Alam's Guest House — side view with guests",
     caption: "A warm welcome for every guest",

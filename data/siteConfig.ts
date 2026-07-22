@@ -29,10 +29,10 @@ export const siteConfig = {
   name: "Alam's Guest House",
   tagline: "Comfort & Hospitality in the Heart of Upper Chitral",
   description:
-    "Alam's Guest House offers warm, family-run hospitality in Booni, Upper Chitral — comfortable rooms, an elegant event hall, and easy access to some of the region's most beautiful alpine meadows and valleys.",
+    "Alam's Guest House offers warm, family-run hospitality in Booni, Upper Chitral — one of Chitral's most scenic valleys — with comfortable rooms, an elegant event hall, and easy access to some of the region's most beautiful alpine meadows and valleys.",
   phoneDisplay: formatPhoneDisplay(whatsappNumber),
   whatsappNumber,
-  email: "info@alamguesthouse.example.com",
+  email: "abidriza007@gmail.com",
   address:
     "Alam's Guest House, Booni Kruijinali, Opposite Post Office, Booni 17050, Upper Chitral, Khyber Pakhtunkhwa, Pakistan",
   mapEmbedUrl:
