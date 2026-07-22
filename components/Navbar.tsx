@@ -60,7 +60,7 @@ export default function Navbar() {
                 "text-sm font-medium transition-colors",
                 scrolled
                   ? "text-navy-800 hover:text-terracotta-500"
-                  : "text-beige-100 hover:text-beige-50"
+                  : "text-beige-100 hover:text-terracotta-200"
               )}
             >
               {link.label}

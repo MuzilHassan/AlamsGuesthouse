@@ -13,7 +13,7 @@ export default function RoomsSection() {
         <SectionHeading
           eyebrow="Stay With Us"
           title="Rooms Built For Every Traveler"
-          subtitle="From cozy solo stays to spacious family suites, choose the room that fits your trip."
+          subtitle="From cozy solo stays to spacious deluxe rooms, choose the room that fits your trip."
         />
 
         <motion.div

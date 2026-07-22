@@ -1,14 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Users } from "lucide-react";
 import type { Hall } from "@/data/halls";
+import type { ImageItem } from "@/data/types";
 import { whatsappMessages } from "@/lib/whatsapp";
 import { staggerItem } from "@/lib/motionVariants";
+import Lightbox from "./Lightbox";
 import WhatsAppLink from "./WhatsAppLink";
 
-export default function HallCard({ hall }: { hall: Hall }) {
+interface HallCardProps {
+  hall: Hall;
+  allImages: ImageItem[];
+  startIndex: number;
+}
+
+export default function HallCard({ hall, allImages, startIndex }: HallCardProps) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <motion.div
       variants={staggerItem}
@@ -16,7 +27,12 @@ export default function HallCard({ hall }: { hall: Hall }) {
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
       className="group flex flex-col overflow-hidden rounded-2xl border border-beige-300 bg-beige-50 shadow-sm hover:shadow-xl sm:flex-row"
     >
-      <div className="relative aspect-4/3 w-full overflow-hidden sm:aspect-auto sm:w-70 sm:shrink-0">
+      <button
+        type="button"
+        onClick={() => setLightboxOpen(true)}
+        aria-label={`View photos of ${hall.name}`}
+        className="relative aspect-4/3 w-full cursor-zoom-in overflow-hidden sm:aspect-auto sm:w-70 sm:shrink-0"
+      >
         <motion.div
           className="relative h-full w-full"
           whileHover={{ scale: 1.04 }}
@@ -30,7 +46,7 @@ export default function HallCard({ hall }: { hall: Hall }) {
             className="object-cover"
           />
         </motion.div>
-      </div>
+      </button>
 
       <div className="flex flex-1 flex-col justify-center p-6 sm:p-8">
         <h3 className="font-serif text-xl font-semibold text-navy-900">
@@ -60,6 +76,12 @@ export default function HallCard({ hall }: { hall: Hall }) {
           Enquire on WhatsApp
         </WhatsAppLink>
       </div>
+
+      <Lightbox
+        images={allImages}
+        index={lightboxOpen ? startIndex : null}
+        onClose={() => setLightboxOpen(false)}
+      />
     </motion.div>
   );
 }

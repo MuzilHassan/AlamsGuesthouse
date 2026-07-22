@@ -7,6 +7,8 @@ import SectionHeading from "./SectionHeading";
 import HallCard from "./HallCard";
 
 export default function HallsSection() {
+  const allImages = halls.flatMap((hall) => hall.images);
+
   return (
     <section id="halls" className="bg-beige-100 py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -23,9 +25,19 @@ export default function HallsSection() {
           variants={staggerContainer}
           className="mt-14 flex flex-col gap-5"
         >
-          {halls.map((hall) => (
-            <HallCard key={hall.id} hall={hall} />
-          ))}
+          {halls.map((hall, i) => {
+            const startIndex = halls
+              .slice(0, i)
+              .reduce((sum, h) => sum + h.images.length, 0);
+            return (
+              <HallCard
+                key={hall.id}
+                hall={hall}
+                allImages={allImages}
+                startIndex={startIndex}
+              />
+            );
+          })}
         </motion.div>
       </div>
     </section>

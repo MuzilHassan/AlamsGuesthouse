@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { galleryImages } from "@/data/gallery";
 import { staggerContainer, staggerItem } from "@/lib/motionVariants";
+import Lightbox from "./Lightbox";
 import SectionHeading from "./SectionHeading";
 
 const aspectRatioClass: Record<"square" | "portrait" | "landscape", string> = {
@@ -13,6 +15,8 @@ const aspectRatioClass: Record<"square" | "portrait" | "landscape", string> = {
 };
 
 export default function GallerySection() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <section id="gallery" className="bg-beige-100 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -29,7 +33,7 @@ export default function GallerySection() {
           variants={staggerContainer}
           className="mt-14 columns-2 gap-4 sm:columns-3 [&>*]:mb-4"
         >
-          {galleryImages.map((image) => (
+          {galleryImages.map((image, i) => (
             <motion.div
               key={image.id}
               variants={staggerItem}
@@ -37,23 +41,36 @@ export default function GallerySection() {
                 aspectRatioClass[image.aspect ?? "landscape"]
               }`}
             >
-              <motion.div
-                className="h-full w-full"
-                whileHover={{ scale: 1.06 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              <button
+                type="button"
+                onClick={() => setLightboxIndex(i)}
+                aria-label={`View photo: ${image.alt}`}
+                className="block h-full w-full cursor-zoom-in"
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width: 640px) 33vw, 50vw"
-                  className="object-cover"
-                />
-              </motion.div>
+                <motion.div
+                  className="h-full w-full"
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 50vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              </button>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      <Lightbox
+        images={galleryImages}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+      />
     </section>
   );
 }

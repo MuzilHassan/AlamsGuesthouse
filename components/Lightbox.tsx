@@ -21,7 +21,7 @@ export default function Lightbox({ images, index, onClose }: LightboxProps) {
       slides={images.map((image) => ({ src: image.src, alt: image.alt }))}
       plugins={[Counter]}
       counter={{ container: { style: { top: "unset", bottom: 0 } } }}
-      styles={{ container: { backgroundColor: "rgba(16, 27, 39, 0.95)" } }}
+      styles={{ container: { backgroundColor: "rgba(16, 27, 39, 0.8)" } }}
     />
   );
 }
