@@ -1,7 +1,7 @@
 <!-- BEGIN:alara-code-index -->
 # Project documents
 
-The approved documents of **Alam Guest house**, pushed from Alara Code. Each pipeline version's approved document is its own file, named after the version (for example `srs-v1.0.md` and `srs-v2.0.md`). Alara Code only adds files here: a file that is pushed is never overwritten or deleted, so every version's documents stay in the repository. A document is added once it is approved in Alara Code.
+The approved documents of **Alam Guest house**, pushed from Alara Code. Each pipeline version's approved document is its own file, named after the version (for example `srs-v1.0.md` and `srs-v2.0.md`). Alara Code only adds files here: a file that is pushed is never overwritten or deleted, so every version's documents stay in the repository. The one exception is a version's prototype design file, which is replaced when the prototype is run again in that version. A document is added once it is approved in Alara Code.
 
 Current pipeline version: **1.0**
 
@@ -36,7 +36,8 @@ Current pipeline version: **1.0**
 
 | Document | Version | File | Status |
 | --- | --- | --- | --- |
-| UI Prototype | 1.0 |  | not approved yet |
+| UI Prototype | 1.0 | [prototype-v1.0.html](prototype/prototype-v1.0.html) | artifact v1 (current) |
+| Prototype design file | 1.0 | [design-v1.0.md](prototype/design-v1.0.md) | prototype artifact v1 |
 
 ## Testing (`testing/`)
 
@@ -62,7 +63,7 @@ Alara Code created these folders once and never writes in them again.
 ## Project brief and design
 
 - Project brief: the repository has its own root `AGENTS.md` / `CLAUDE.md`, which Alara Code did not touch. The approved brief (pipeline version 1.0, brief generation 1) is in Alara Code (Artifacts).
-- Design: no design file yet.
+- Design: the root `DESIGN.md` is the design file of pipeline version 1.0.
 
 Epics and tickets are tracked on the Alara Plan board, not in this repository.
 <!-- END:alara-code-index -->
