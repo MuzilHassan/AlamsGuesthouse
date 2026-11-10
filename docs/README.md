@@ -57,7 +57,7 @@ The epics and tickets approved in Alara Code, one file per epic and per ticket, 
 
 | Version | Epics | Tickets | State |
 | --- | --- | --- | --- |
-| 1.0 | [epics/](implementation/v1.0/epics/) (12) | [tickets/](implementation/v1.0/tickets/) (44) | Tasks generation 1 |
+| 1.0 | [epics/](implementation/v1.0/epics/) (12) | [tickets/](implementation/v1.0/tickets/) (44) | Tasks generation 2 |
 
 ## Team-owned folders
 
