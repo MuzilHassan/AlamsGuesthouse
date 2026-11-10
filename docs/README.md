@@ -51,6 +51,14 @@ Current pipeline version: **1.0**
 | --- | --- | --- | --- |
 | Delivery Plan | 1.0 |  | not approved yet |
 
+## Epics and tickets (`implementation/`)
+
+The epics and tickets approved in Alara Code, one file per epic and per ticket, in a folder per pipeline version and named by unit id: a ticket is identified by its unit id, and the running ticket number is not written in the files. When a newer Tasks approval is pushed, the epics and tickets whose content changed are rewritten, and any that is missing from the repository (deleted by the team, or never delivered because a pull request was not merged) is written again; a ticket that is present and whose content did not change is left exactly as it is, even if it was edited. Edit tickets only after the last Tasks approval has been pushed, because a ticket whose content changed is overwritten by the next push. Files that Alara Code did not write are left alone. The repository copy is the working record of the team's coding agents.
+
+| Version | Epics | Tickets | State |
+| --- | --- | --- | --- |
+| 1.0 | [epics/](implementation/v1.0/epics/) (12) | [tickets/](implementation/v1.0/tickets/) (44) | Tasks generation 1 |
+
 ## Team-owned folders
 
 - `adr/`: The team's own architecture decision records, one file per decision, named `NNNN-<kebab-title>.md` (numbered in order, never reused).
@@ -64,6 +72,4 @@ Alara Code created these folders once and never writes in them again.
 
 - Project brief: the repository has its own root `AGENTS.md` / `CLAUDE.md`, which Alara Code did not touch. The approved brief (pipeline version 1.0, brief generation 1) is in Alara Code (Artifacts).
 - Design: the root `DESIGN.md` is the design file of pipeline version 1.0.
-
-Epics and tickets are tracked on the Alara Plan board, not in this repository.
 <!-- END:alara-code-index -->
