@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Play } from "lucide-react";
 import { galleryImages } from "@/data/gallery";
 import { staggerContainer, staggerItem } from "@/lib/motionVariants";
 import Lightbox from "./Lightbox";
@@ -44,22 +45,46 @@ export default function GallerySection() {
               <button
                 type="button"
                 onClick={() => setLightboxIndex(i)}
-                aria-label={`View photo: ${image.alt}`}
-                className="block h-full w-full cursor-zoom-in"
+                aria-label={`${image.type === "video" ? "Play video" : "View photo"}: ${image.alt}`}
+                className={`block h-full w-full ${
+                  image.type === "video" ? "cursor-pointer" : "cursor-zoom-in"
+                }`}
               >
                 <motion.div
-                  className="h-full w-full"
+                  className="relative h-full w-full"
                   whileHover={{ scale: 1.06 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(min-width: 640px) 33vw, 50vw"
-                    className="object-cover"
-                  />
+                  {image.type === "video" ? (
+                    <video
+                      // The #t fragment makes browsers (iOS Safari included)
+                      // paint a frame as the thumbnail instead of a blank box.
+                      src={`${image.src}#t=0.1`}
+                      poster={image.poster}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-hidden
+                      tabIndex={-1}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 50vw"
+                      className="object-cover"
+                    />
+                  )}
                 </motion.div>
+                {image.type === "video" && (
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-black/55 text-beige-50 backdrop-blur-sm sm:h-14 sm:w-14">
+                      <Play className="ml-0.5 h-5 w-5 fill-current sm:h-6 sm:w-6" />
+                    </span>
+                  </span>
+                )}
               </button>
             </motion.div>
           ))}

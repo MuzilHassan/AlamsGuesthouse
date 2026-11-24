@@ -9,6 +9,7 @@ export interface GalleryImage extends ImageItem {
 export const galleryImages: GalleryImage[] = [
   { id: "gallery-1", src: "/images/gallery/guests-outside-entrance.jpeg", alt: "Guests posing outside the guest house entrance", category: "exterior", aspect: "landscape" },
   { id: "gallery-2", src: "/images/gallery/traditional-meal-guests.jpeg", alt: "Guests sharing a traditional meal together", category: "amenity", aspect: "portrait" },
+  { id: "gallery-video-1", type: "video", src: "/images/gallery/video-1.mp4", width: 478, height: 850, alt: "Video from Alam's Guest House", category: "surroundings", aspect: "portrait" },
   { id: "gallery-3", src: "/images/gallery/balcony-mountain-views.jpeg", alt: "Balcony corridor with mountain views", category: "amenity", aspect: "portrait" },
   { id: "gallery-4", src: "/images/gallery/guests-gathered-outside.jpeg", alt: "Guests gathered outside the guest house", category: "exterior", aspect: "landscape" },
   { id: "gallery-5", src: "/images/gallery/garden-mulberries.jpeg", alt: "Fresh mulberries picked from the garden", category: "surroundings", aspect: "portrait" },

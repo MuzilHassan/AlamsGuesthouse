@@ -7,6 +7,12 @@ export const heroImages: ImageItem[] = [
     caption: "Alam's Guest House, Booni",
   },
   {
+    type: "video",
+    src: "/images/hero/hero-video-1.mp4",
+    alt: "Video of Alam's Guest House",
+    caption: "A look around Alam's Guest House",
+  },
+  {
     src: "/images/hero/guesthouse-side-view-guests.jpeg",
     srcMobile: "/images/hero/side-view.jpeg",
     alt: "Alam's Guest House — side view with guests",
